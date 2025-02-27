@@ -1,0 +1,56 @@
+form {
+    padding: 20px;
+    margin: 0;
+    background: whitesmoke;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.mc-field-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#mc_embed_signup_scroll h2 {
+    font-size: 2.4rem;
+}
+
+input[type="email"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 200px;
+}
+
+.button {
+    padding: 10px 15px;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: fit-content;
+}
+
+.button:hover {
+    background-color: #005bb5;
+}
+
+@media (max-width: 768px) {
+    form {
+        max-width: 300px;
+        padding: 20px;
+        margin: 0;
+        background: white;
+        color: black;
+    }
+}
