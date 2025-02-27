@@ -10,7 +10,7 @@ function EventForm() {
         return <p>Thanks for submitting your event!</p>;
     }
     return (
-        <form className="eventForm" onSubmit={handleSubmit}>
+        <form id="addEvent" className="eventForm" onSubmit={handleSubmit}>
             <div className="form-group">
                 <label htmlFor="eventTitle">Event Title</label>
                 <input id="eventTitle" type="text" name="eventTitle" required />
