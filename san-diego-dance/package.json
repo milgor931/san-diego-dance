@@ -15,7 +15,7 @@
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://milgor931.github.io/san-diego-dance/san-diego-dance",
+  "homepage": "https://milgor931.github.io/san-diego-dance/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
