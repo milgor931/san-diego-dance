@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/milgor931/san-diego-dance/static/css/main.724cf8c8.css",
+    "main.js": "/milgor931/san-diego-dance/static/js/main.e7cf6e12.js",
+    "static/js/453.02c73b5a.chunk.js": "/milgor931/san-diego-dance/static/js/453.02c73b5a.chunk.js",
+    "static/media/newsletter.jpg": "/milgor931/san-diego-dance/static/media/newsletter.7fad0a088d2f7a710b87.jpg",
+    "index.html": "/milgor931/san-diego-dance/index.html",
+    "main.724cf8c8.css.map": "/milgor931/san-diego-dance/static/css/main.724cf8c8.css.map",
+    "main.e7cf6e12.js.map": "/milgor931/san-diego-dance/static/js/main.e7cf6e12.js.map",
+    "453.02c73b5a.chunk.js.map": "/milgor931/san-diego-dance/static/js/453.02c73b5a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.724cf8c8.css",
+    "static/js/main.e7cf6e12.js"
+  ]
+}
