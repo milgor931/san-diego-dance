@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from 'react-router-dom';
 import "./NavBar.css";
 
 const Navbar = () => {
@@ -44,11 +45,11 @@ const Navbar = () => {
                 className={`nav-links ${isMobile ? "mobile active" : ""}`}
             >
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/events">Events</a></li>
-                    <li><a href="/">Classes</a></li>
-                    <li><a href="/">Resources</a></li>
-                    <li><a href="/">Contact</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/events">Events</Link></li>
+                    <li><Link to="/">Classes</Link></li>
+                    <li><Link to="/">Resources</Link></li>
+                    <li><Link to="/">Contact</Link></li>
                 </ul>
             </nav>
             <button
