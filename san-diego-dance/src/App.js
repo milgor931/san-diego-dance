@@ -7,7 +7,7 @@ import Navbar from './NavBar'; // Your Navbar component
 
 function App() {
   return (
-    <Router basename="/san-diego-dance"> {/* Wrap your entire app in the Router component */}
+    <Router> {/* Wrap your entire app in the Router component */}
       <Navbar /> {/* The Navbar will be displayed across all pages */}
       <div className="App">
         <Routes> {/* Define the Routes */}
