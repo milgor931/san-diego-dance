@@ -11,16 +11,23 @@
   padding: 10vw;
 }
 
+
 .headerWithButton {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
+  align-items: start;
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 600px) {
+  .headerWithButton {
+    flex-direction: column;
+  }
+  
 }
 
 button {
   width: fit-content;
-  margin-left: 10px;
   min-width: 100px;
 }
 

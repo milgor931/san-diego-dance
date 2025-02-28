@@ -34,7 +34,9 @@ const Navbar = () => {
     return (
         <header className="navbar">
             <div className="logo">
-                <a href="/"><img src="/assets/logo.png" alt="San Diego Dance Logo" /></a>
+                <a href="/">
+                    {/* <img src="/assets/logo.png" alt="San Diego Dance Logo" /> */}
+                </a>
                 <h1>San Diego Dance</h1>
             </div>
             <nav
@@ -44,7 +46,9 @@ const Navbar = () => {
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/events">Events</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/">Classes</a></li>
+                    <li><a href="/">Resources</a></li>
+                    <li><a href="/">Contact</a></li>
                 </ul>
             </nav>
             <button

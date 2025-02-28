@@ -1,27 +1,32 @@
-// src/App.js
-import React from 'react';
+import React, { useState } from 'react';
 import EventCalendar from './EventCalendar';
 import SubmitEventForm from './SubmitEventForm';
 import './App.css';
 
 function Events() {
+    const [showForm, setShowForm] = useState(false);
+
     const viewToday = () => {
         let formattedDate = new Date().toLocaleDateString('en-CA');
-        window.open(`/events/#${formattedDate}`, "_self")
-    }
+        window.open(`/events/#${formattedDate}`, "_self");
+    };
 
     return (
         <div className="page events">
             <div className="headerWithButton">
-                <h1>Community Events</h1>
-                <button onClick={() => window.open("/events/#addEvent", "_self")}>Add Event</button>
+                {showForm ? (
+                    <button onClick={() => setShowForm(false)}>Back to Events</button>
+                ) : (
+                    <button onClick={() => setShowForm(true)}>Add Event</button>
+                )}
+                <h1>{showForm ? "Add an Event" : "Community Events"}</h1>
             </div>
 
-
-            <EventCalendar />
-
-            <h1>Add an Event</h1>
-            <SubmitEventForm />
+            {showForm ? (
+                <SubmitEventForm />
+            ) : (
+                <EventCalendar />
+            )}
         </div>
     );
 }
