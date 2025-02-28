@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/san-diego-dance/san-diego-dance/static/css/main.36d98718.css",
-    "main.js": "/san-diego-dance/san-diego-dance/static/js/main.99aacc7b.js",
+    "main.css": "/san-diego-dance/san-diego-dance/static/css/main.67d62627.css",
+    "main.js": "/san-diego-dance/san-diego-dance/static/js/main.6487961f.js",
     "static/js/453.02c73b5a.chunk.js": "/san-diego-dance/san-diego-dance/static/js/453.02c73b5a.chunk.js",
     "static/media/newsletter.jpg": "/san-diego-dance/san-diego-dance/static/media/newsletter.7fad0a088d2f7a710b87.jpg",
     "index.html": "/san-diego-dance/san-diego-dance/index.html",
-    "main.36d98718.css.map": "/san-diego-dance/san-diego-dance/static/css/main.36d98718.css.map",
-    "main.99aacc7b.js.map": "/san-diego-dance/san-diego-dance/static/js/main.99aacc7b.js.map",
+    "main.67d62627.css.map": "/san-diego-dance/san-diego-dance/static/css/main.67d62627.css.map",
+    "main.6487961f.js.map": "/san-diego-dance/san-diego-dance/static/js/main.6487961f.js.map",
     "453.02c73b5a.chunk.js.map": "/san-diego-dance/san-diego-dance/static/js/453.02c73b5a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.36d98718.css",
-    "static/js/main.99aacc7b.js"
+    "static/css/main.67d62627.css",
+    "static/js/main.6487961f.js"
   ]
 }
