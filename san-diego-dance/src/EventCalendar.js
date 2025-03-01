@@ -1,7 +1,169 @@
 import React, { useState } from "react";
 import './EventCalendar.css';
 
+// DRAFT
+
+// {
+//     eventTitle: "S P A C E Pro Showcase",
+//     eventOrganizer: "Disco Riot",
+//     eventDate: "2025-03-28",
+//     eventRecurrence: "One-time",
+//     startTime: "7:00 pm",
+//     endTime: "8:00 pm",
+//     eventLocation: "San Diego, CA",
+//     eventUrl: "https://www.tickettailor.com/events/discoriot/1599788?",
+//     eventDescription: "An immersive dance performance exploring contemporary themes through movement and sound.",
+//     accessibilityNotes: "Wheelchair accessible, ASL interpretation available.",
+//     eventImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQivPp3I6f-cBfIUhtl8bClVqJ-9gQPyA9LtQ&s"
+// },
+
 // Example events data with more variety
+// const eventsData = [
+//     {
+//         eventTitle: "S P A C E Pro Showcase",
+//         eventOrganizer: "Disco Riot",
+//         eventDate: "2025-03-28",
+//         eventRecurrence: "One-time",
+//         startTime: "7:00 pm",
+//         endTime: "8:00 pm",
+//         eventLocation: "San Diego, CA",
+//         eventUrl: "https://www.tickettailor.com/events/discoriot/1599788?",
+//         eventDescription: "An immersive dance performance exploring contemporary themes through movement and sound.",
+//         accessibilityNotes: "Wheelchair accessible, ASL interpretation available.",
+//         eventImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQivPp3I6f-cBfIUhtl8bClVqJ-9gQPyA9LtQ&s"
+//     },
+//     {
+//         eventTitle: "S P A C E Pro Showcase",
+//         eventOrganizer: "Disco Riot",
+//         eventDate: "2025-03-29",
+//         eventRecurrence: "One-time",
+//         startTime: "7:00 pm",
+//         endTime: "8:00 pm",
+//         eventLocation: "San Diego, CA",
+//         eventUrl: "https://www.tickettailor.com/events/discoriot/1599788?",
+//         eventDescription: "An immersive dance performance exploring contemporary themes through movement and sound.",
+//         accessibilityNotes: "Wheelchair accessible, ASL interpretation available.",
+//         eventImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQivPp3I6f-cBfIUhtl8bClVqJ-9gQPyA9LtQ&s"
+//     },
+//     {
+//         eventTitle: "Choreo & PLAY",
+//         eventOrganizer: "Disco Riot",
+//         eventDate: "2025-04-10",
+//         eventRecurrence: "Weekly",
+//         startTime: "18:30",
+//         endTime: "20:00",
+//         eventLocation: "San Diego, CA",
+//         eventUrl: "https://discoriot.org/choreoand/",
+//         eventDescription: "A collaborative space for choreographers to create and share work.",
+//         accessibilityNotes: "Open to all levels, wheelchair accessible.",
+//         eventImg: "https://s3-media0.fl.yelpcdn.com/bphoto/Fl2_6RemswjqrXTF6rdq8g/348s.jpg"
+//     },
+//     {
+//         eventTitle: "Class with SEED Choreographers",
+//         eventOrganizer: "Malashock Dance",
+//         eventDate: "2025-03-20",
+//         eventRecurrence: "One-time",
+//         startTime: "17:00",
+//         endTime: "19:00",
+//         eventLocation: "Malashock Dance, San Diego, CA",
+//         eventUrl: "https://malashockdance.org/events/class-with-seed-choreographers/",
+//         eventDescription: "An exclusive workshop with SEED choreographers for dancers of all levels.",
+//         accessibilityNotes: "Accessible venue, parking available.",
+//         eventImg: "https://cdn.kpbs.org/dims4/default/572ee86/2147483647/strip/true/crop/960x591+0+0/resize/1760x1084!/format/webp/quality/90/?url=http%3A%2F%2Fkpbs-brightspot.s3.us-west-2.amazonaws.com%2Fd2%2F66%2Fbd73cd7c4b41acf1d925dac3f066%2Fmalashock-doug-mcminimy.jpg"
+//     },
+//     {
+//         eventTitle: "Dance at Liberty Station",
+//         eventOrganizer: "Malashock Dance",
+//         eventDate: "2025-05-05",
+//         eventRecurrence: "Monthly",
+//         startTime: "18:00",
+//         endTime: "20:00",
+//         eventLocation: "Liberty Station, San Diego, CA",
+//         eventUrl: "https://malashockdance.org/dance-at-liberty-station/",
+//         eventDescription: "An open dance event for the community at Liberty Station.",
+//         accessibilityNotes: "Outdoor event, wheelchair accessible.",
+//         eventImg: "https://malashockdance.org/wp-content/uploads/2024/08/adults.png"
+//     },
+//     {
+//         eventTitle: "NeuroDance",
+//         eventOrganizer: "Malashock Dance",
+//         eventDate: "2025-06-12",
+//         eventRecurrence: "Biweekly",
+//         startTime: "16:00",
+//         endTime: "17:30",
+//         eventLocation: "Malashock Dance, San Diego, CA",
+//         eventUrl: "http://malashockdance.org/neurodance/",
+//         eventDescription: "A dance class designed for individuals with neurological differences.",
+//         accessibilityNotes: "Sensory-friendly, accessible restrooms.",
+//         eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/12.png"
+//     },
+//     {
+//         eventTitle: "SEED 2025",
+//         eventOrganizer: "Malashock Dance",
+//         eventDate: "2025-04-02",
+//         eventRecurrence: "Annual",
+//         startTime: "7:30 pm",
+//         endTime: "9:30 pm",
+//         eventLocation: "San Diego, CA",
+//         eventUrl: "http://malashockdance.org/seed-2025/",
+//         eventDescription: "An annual showcase featuring emerging choreographers and innovative performances.",
+//         accessibilityNotes: "Wheelchair accessible, captioning available.",
+//         eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/Seed-Ticketleap-banner-960-x-400-px.png"
+//     },
+//     {
+//         eventTitle: "SEED 2025",
+//         eventOrganizer: "Malashock Dance",
+//         eventDate: "2025-04-03",
+//         eventRecurrence: "Annual",
+//         startTime: "7:30 pm",
+//         endTime: "9:30 pm",
+//         eventLocation: "San Diego, CA",
+//         eventUrl: "http://malashockdance.org/seed-2025/",
+//         eventDescription: "An annual showcase featuring emerging choreographers and innovative performances.",
+//         accessibilityNotes: "Wheelchair accessible, captioning available.",
+//         eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/Seed-Ticketleap-banner-960-x-400-px.png"
+//     },
+//     {
+//         eventTitle: "SEED 2025",
+//         eventOrganizer: "Malashock Dance",
+//         eventDate: "2025-04-04",
+//         eventRecurrence: "Annual",
+//         startTime: "7:30 pm",
+//         endTime: "9:30 pm",
+//         eventLocation: "San Diego, CA",
+//         eventUrl: "http://malashockdance.org/seed-2025/",
+//         eventDescription: "An annual showcase featuring emerging choreographers and innovative performances.",
+//         accessibilityNotes: "Wheelchair accessible, captioning available.",
+//         eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/Seed-Ticketleap-banner-960-x-400-px.png"
+//     },
+//     {
+//         eventTitle: "SEED 2025",
+//         eventOrganizer: "Malashock Dance",
+//         eventDate: "2025-04-05",
+//         eventRecurrence: "Annual",
+//         startTime: "7:30 pm",
+//         endTime: "9:30 pm",
+//         eventLocation: "San Diego, CA",
+//         eventUrl: "http://malashockdance.org/seed-2025/",
+//         eventDescription: "An annual showcase featuring emerging choreographers and innovative performances.",
+//         accessibilityNotes: "Wheelchair accessible, captioning available.",
+//         eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/Seed-Ticketleap-banner-960-x-400-px.png"
+//     },
+//     {
+//         eventTitle: "SEED 2025",
+//         eventOrganizer: "Malashock Dance",
+//         eventDate: "2025-04-06",
+//         eventRecurrence: "Annual",
+//         startTime: "7:30 pm",
+//         endTime: "9:30 pm",
+//         eventLocation: "San Diego, CA",
+//         eventUrl: "http://malashockdance.org/seed-2025/",
+//         eventDescription: "An annual showcase featuring emerging choreographers and innovative performances.",
+//         accessibilityNotes: "Wheelchair accessible, captioning available.",
+//         eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/Seed-Ticketleap-banner-960-x-400-px.png"
+//     }
+// ];
+
 const eventsData = [
     {
         eventTitle: "S P A C E Pro Showcase",
@@ -10,9 +172,9 @@ const eventsData = [
         eventRecurrence: "One-time",
         startTime: "7:00 pm",
         endTime: "8:00 pm",
-        eventLocation: "San Diego, CA",
+        eventLocation: "1100 Kettner Blvd. San Diego, CA, 92101",
         eventUrl: "https://www.tickettailor.com/events/discoriot/1599788?",
-        eventDescription: "An immersive dance performance exploring contemporary themes through movement and sound.",
+        eventDescription: "Final presentation of our 2025 S P A C E Pro Residency program with Resident Artists, Radhika Karandikar and Isabel Desmet.",
         accessibilityNotes: "Wheelchair accessible, ASL interpretation available.",
         eventImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQivPp3I6f-cBfIUhtl8bClVqJ-9gQPyA9LtQ&s"
     },
@@ -23,131 +185,26 @@ const eventsData = [
         eventRecurrence: "One-time",
         startTime: "7:00 pm",
         endTime: "8:00 pm",
-        eventLocation: "San Diego, CA",
+        eventLocation: "1100 Kettner Blvd. San Diego, CA, 92101",
         eventUrl: "https://www.tickettailor.com/events/discoriot/1599788?",
-        eventDescription: "An immersive dance performance exploring contemporary themes through movement and sound.",
+        eventDescription: "Final presentation of our 2025 S P A C E Pro Residency program with Resident Artists, Radhika Karandikar and Isabel Desmet.",
         accessibilityNotes: "Wheelchair accessible, ASL interpretation available.",
         eventImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQivPp3I6f-cBfIUhtl8bClVqJ-9gQPyA9LtQ&s"
     },
     {
-        eventTitle: "Choreo & PLAY",
-        eventOrganizer: "Disco Riot",
-        eventDate: "2025-04-10",
-        eventRecurrence: "Weekly",
-        startTime: "18:30",
-        endTime: "20:00",
-        eventLocation: "San Diego, CA",
-        eventUrl: "https://discoriot.org/choreoand/",
-        eventDescription: "A collaborative space for choreographers to create and share work.",
-        accessibilityNotes: "Open to all levels, wheelchair accessible.",
-        eventImg: "https://s3-media0.fl.yelpcdn.com/bphoto/Fl2_6RemswjqrXTF6rdq8g/348s.jpg"
-    },
-    {
-        eventTitle: "Class with SEED Choreographers",
-        eventOrganizer: "Malashock Dance",
-        eventDate: "2025-03-20",
-        eventRecurrence: "One-time",
-        startTime: "17:00",
-        endTime: "19:00",
-        eventLocation: "Malashock Dance, San Diego, CA",
-        eventUrl: "https://malashockdance.org/events/class-with-seed-choreographers/",
-        eventDescription: "An exclusive workshop with SEED choreographers for dancers of all levels.",
-        accessibilityNotes: "Accessible venue, parking available.",
-        eventImg: "https://cdn.kpbs.org/dims4/default/572ee86/2147483647/strip/true/crop/960x591+0+0/resize/1760x1084!/format/webp/quality/90/?url=http%3A%2F%2Fkpbs-brightspot.s3.us-west-2.amazonaws.com%2Fd2%2F66%2Fbd73cd7c4b41acf1d925dac3f066%2Fmalashock-doug-mcminimy.jpg"
-    },
-    {
-        eventTitle: "Dance at Liberty Station",
-        eventOrganizer: "Malashock Dance",
-        eventDate: "2025-05-05",
-        eventRecurrence: "Monthly",
-        startTime: "18:00",
-        endTime: "20:00",
-        eventLocation: "Liberty Station, San Diego, CA",
-        eventUrl: "https://malashockdance.org/dance-at-liberty-station/",
-        eventDescription: "An open dance event for the community at Liberty Station.",
-        accessibilityNotes: "Outdoor event, wheelchair accessible.",
-        eventImg: "https://malashockdance.org/wp-content/uploads/2024/08/adults.png"
-    },
-    {
-        eventTitle: "NeuroDance",
-        eventOrganizer: "Malashock Dance",
-        eventDate: "2025-06-12",
-        eventRecurrence: "Biweekly",
-        startTime: "16:00",
-        endTime: "17:30",
-        eventLocation: "Malashock Dance, San Diego, CA",
-        eventUrl: "http://malashockdance.org/neurodance/",
-        eventDescription: "A dance class designed for individuals with neurological differences.",
-        accessibilityNotes: "Sensory-friendly, accessible restrooms.",
-        eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/12.png"
-    },
-    {
-        eventTitle: "SEED 2025",
-        eventOrganizer: "Malashock Dance",
-        eventDate: "2025-04-02",
-        eventRecurrence: "Annual",
-        startTime: "7:30 pm",
+        eventTitle: "Monday Night Contact Improvisation Class and Jam",
+        eventOrganizer: "Elie Dervin and Richie Villa",
+        eventDate: "2025-03-03",
+        eventRecurrence: "weekly",
+        startTime: "5:30 pm",
         endTime: "9:30 pm",
-        eventLocation: "San Diego, CA",
-        eventUrl: "http://malashockdance.org/seed-2025/",
-        eventDescription: "An annual showcase featuring emerging choreographers and innovative performances.",
-        accessibilityNotes: "Wheelchair accessible, captioning available.",
-        eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/Seed-Ticketleap-banner-960-x-400-px.png"
-    },
-    {
-        eventTitle: "SEED 2025",
-        eventOrganizer: "Malashock Dance",
-        eventDate: "2025-04-03",
-        eventRecurrence: "Annual",
-        startTime: "7:30 pm",
-        endTime: "9:30 pm",
-        eventLocation: "San Diego, CA",
-        eventUrl: "http://malashockdance.org/seed-2025/",
-        eventDescription: "An annual showcase featuring emerging choreographers and innovative performances.",
-        accessibilityNotes: "Wheelchair accessible, captioning available.",
-        eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/Seed-Ticketleap-banner-960-x-400-px.png"
-    },
-    {
-        eventTitle: "SEED 2025",
-        eventOrganizer: "Malashock Dance",
-        eventDate: "2025-04-04",
-        eventRecurrence: "Annual",
-        startTime: "7:30 pm",
-        endTime: "9:30 pm",
-        eventLocation: "San Diego, CA",
-        eventUrl: "http://malashockdance.org/seed-2025/",
-        eventDescription: "An annual showcase featuring emerging choreographers and innovative performances.",
-        accessibilityNotes: "Wheelchair accessible, captioning available.",
-        eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/Seed-Ticketleap-banner-960-x-400-px.png"
-    },
-    {
-        eventTitle: "SEED 2025",
-        eventOrganizer: "Malashock Dance",
-        eventDate: "2025-04-05",
-        eventRecurrence: "Annual",
-        startTime: "7:30 pm",
-        endTime: "9:30 pm",
-        eventLocation: "San Diego, CA",
-        eventUrl: "http://malashockdance.org/seed-2025/",
-        eventDescription: "An annual showcase featuring emerging choreographers and innovative performances.",
-        accessibilityNotes: "Wheelchair accessible, captioning available.",
-        eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/Seed-Ticketleap-banner-960-x-400-px.png"
-    },
-    {
-        eventTitle: "SEED 2025",
-        eventOrganizer: "Malashock Dance",
-        eventDate: "2025-04-06",
-        eventRecurrence: "Annual",
-        startTime: "7:30 pm",
-        endTime: "9:30 pm",
-        eventLocation: "San Diego, CA",
-        eventUrl: "http://malashockdance.org/seed-2025/",
-        eventDescription: "An annual showcase featuring emerging choreographers and innovative performances.",
-        accessibilityNotes: "Wheelchair accessible, captioning available.",
-        eventImg: "https://malashockdance.org/wp-content/uploads/2025/01/Seed-Ticketleap-banner-960-x-400-px.png"
+        eventLocation: "Light Box Theater, 2590 Truxtun Road",
+        eventUrl: "https://www.instagram.com/p/DGoZQPByeG1/",
+        eventDescription: "A Contact Improvisation dance event with an all-levels class from 5:30pm to 6:30pm followed by an open jam from 6:30pm to 9pm.",
+        accessibilityNotes: "There are two elevators required to have full access to the space without use of any stairs. The first one has ramp access from the back parking lot.",
+        eventImg: ""
     }
-];
-
+]
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -254,9 +311,11 @@ const EventCard = ({ event }) => {
         <div className={`event-card-content ${isOpen ? 'open' : ''}`} onClick={toggleAccordion}>
             {/* Event Image */}
             <div className="event-card-header">
-                <div className="event-card-img-container">
-                    <img src={event.eventImg || "fallback-image.jpg"} alt="Event" />
-                </div>
+                { event.eventImg !== ""
+                    && <div className="event-card-img-container">
+                        <img src={event.eventImg} alt="Event" />
+                    </div>
+                }
 
                 <div className="event-card-body">
                     <div>
