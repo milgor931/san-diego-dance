@@ -54,13 +54,12 @@ const Navbar = () => {
                     <li><Link to="/" onClick={closeMenu}>Contact</Link></li>
                 </ul>
             </nav>
-            <button
-                ref={buttonRef}
+
+            <span ref={buttonRef}
                 className="menu-toggle"
-                onClick={toggleMenu}
-            >
-                ☰
-            </button>
+                onClick={toggleMenu}>
+                    ☰
+            </span>
 
             {/* Overlay */}
             <div className={`overlay ${isMobile ? "active" : ""}`} onClick={closeMenu}></div>
