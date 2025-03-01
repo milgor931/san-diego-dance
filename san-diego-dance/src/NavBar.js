@@ -12,6 +12,11 @@ const Navbar = () => {
         setIsMobile(!isMobile);
     };
 
+    // Function to close the menu when a link is clicked
+    const closeMenu = () => {
+        setIsMobile(false);
+    };
+
     // Close the menu if clicked outside
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -35,9 +40,6 @@ const Navbar = () => {
     return (
         <header className="navbar">
             <div className="logo">
-                <a href="/">
-                    {/* <img src="/assets/logo.png" alt="San Diego Dance Logo" /> */}
-                </a>
                 <h1>San Diego Dance</h1>
             </div>
             <nav
@@ -45,11 +47,11 @@ const Navbar = () => {
                 className={`nav-links ${isMobile ? "mobile active" : ""}`}
             >
                 <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/events">Events</Link></li>
-                    <li><Link to="/">Classes</Link></li>
-                    <li><Link to="/">Resources</Link></li>
-                    <li><Link to="/">Contact</Link></li>
+                    <li><Link to="/" onClick={closeMenu}>Home</Link></li>
+                    <li><Link to="/events" onClick={closeMenu}>Events</Link></li>
+                    <li><Link to="/" onClick={closeMenu}>Classes</Link></li>
+                    <li><Link to="/" onClick={closeMenu}>Resources</Link></li>
+                    <li><Link to="/" onClick={closeMenu}>Contact</Link></li>
                 </ul>
             </nav>
             <button
@@ -57,11 +59,11 @@ const Navbar = () => {
                 className="menu-toggle"
                 onClick={toggleMenu}
             >
-                {isMobile ? "x" : "☰"}
+                ☰
             </button>
-            
+
             {/* Overlay */}
-            <div className={`overlay ${isMobile ? "active" : ""}`} onClick={() => setIsMobile(false)}></div>
+            <div className={`overlay ${isMobile ? "active" : ""}`} onClick={closeMenu}></div>
         </header>
     );
 };

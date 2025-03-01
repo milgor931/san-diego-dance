@@ -6,6 +6,7 @@
     background-color: white;
     box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
+    width: 100%;
 }
 
 .logo {
@@ -20,6 +21,10 @@
     font-family: Raleway, sans-serif;
     font-weight: 600;
     font-size: 1.5rem;
+}
+
+.logo h1 a {
+    text-decoration: none;
 }
 
 .logo a img {
@@ -57,7 +62,6 @@
     border: none;
     font-size: 2.5rem;
     cursor: pointer;
-    width: 20px;
     padding: 0;
     margin: 0;
 }
@@ -71,7 +75,7 @@
     width: 250px;
     height: 100%;
     text-align: center;
-    transition: right 0.3s ease;
+    transition: right 0.3s ease-in-out;
 }
 
 .nav-links.mobile ul {

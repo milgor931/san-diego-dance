@@ -47,8 +47,8 @@ function EventForm() {
                 <label htmlFor="eventLocation">Event Location</label>
                 <input id="eventLocation" type="text" name="eventLocation" required />
 
-                <label htmlFor="eventUrl">Event URL</label>
-                <input id="eventUrl" type="url" name="eventUrl" required />
+                <label htmlFor="eventUrl">Event URL (Optional)</label>
+                <input id="eventUrl" type="text" name="eventUrl" required />
             </div>
 
             <div className="form-group full-width">
@@ -68,7 +68,7 @@ function EventForm() {
             <ValidationError field="eventStartTime" errors={state.errors} />
             <ValidationError field="eventEndTime" errors={state.errors} />
             <ValidationError field="eventDescription" errors={state.errors} />
-            <ValidationError field="eventUrl" errors={state.errors} />
+            {/* <ValidationError field="eventUrl" errors={state.errors} /> */}
             <ValidationError field="eventLocation" errors={state.errors} />
             <ValidationError field="accessibilityNotes" errors={state.errors} />
             <ValidationError field="eventRecurrence" errors={state.errors} />
