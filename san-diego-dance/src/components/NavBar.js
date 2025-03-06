@@ -49,9 +49,9 @@ const Navbar = () => {
                 <ul>
                     <li><Link to="/" onClick={closeMenu}>Home</Link></li>
                     <li><Link to="/events" onClick={closeMenu}>Events</Link></li>
-                    <li><Link to="/" onClick={closeMenu}>Classes</Link></li>
-                    <li><Link to="/" onClick={closeMenu}>Resources</Link></li>
-                    <li><Link to="/" onClick={closeMenu}>Contact</Link></li>
+                    <li><Link to="/resources" onClick={closeMenu}>Resources</Link></li>
+                    <li><Link to="/community" onClick={closeMenu}>Community</Link></li>
+                    <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
                 </ul>
             </nav>
 

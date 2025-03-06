@@ -1,0 +1,62 @@
+.home-container {
+    text-align: center;
+    font-family: Raleway, Nunito, sans-serif;
+}
+
+.hero {
+    color: #305c89;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: whitesmoke;
+}
+
+.hero h1 {
+    font-size: 2rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+}
+
+.subscription {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('/public/assets/newsletter.jpg') no-repeat center center;
+    background-size: cover;
+    height: 70vh;
+}
+
+.home-container .community {
+    padding: 40px 20px;
+}
+
+.home-container .community .heading {
+    margin: 0;
+    padding: 0;
+}
+
+.home-container .community .heading h2 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.community-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.community-item {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    border-top: 5px solid #0073e6;
+}

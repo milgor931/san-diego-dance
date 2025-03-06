@@ -1,9 +1,20 @@
 // src/App.js
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'; // Use HashRouter
-import Events from './Events';
-import Home from './Home';
-import Navbar from './NavBar'; // Your Navbar component
+
+// Pages
+import Events from './pages/Events';
+import Home from './pages/Home';
+import Resources from './pages/Resources';
+import Community from './pages/Community';
+import Contact from './pages/Contact';
+
+// Components
+import Navbar from './components/NavBar';
+import Footer from './components/Footer';
+
+
+
 
 function App() {
   return (
@@ -13,9 +24,12 @@ function App() {
         <Routes> {/* Define the Routes */}
           <Route path="/" element={<Home />} /> {/* Home route */}
           <Route path="/events" element={<Events />} /> {/* Events route */}
-          {/* <Route path="/contact" element={<Contact />} /> Contact route */}
+          <Route path="/resources" element={<Resources />} /> {/* Resources route */}
+          <Route path="/community" element={<Community />} /> {/* Community route */}
+          <Route path="/contact" element={<Contact />} /> {/* Contact route */}
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }

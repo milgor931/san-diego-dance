@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css';
-import NewsletterSignupForm from './NewsletterSignupForm';
+import NewsletterSignupForm from '../components/NewsletterSignupForm';
 
 const Home = () => {
     return (
@@ -20,8 +20,11 @@ const Home = () => {
 
             {/* Community Engagement Section */}
             <section className="community">
-                <h2>A Passion for Community</h2>
-                <p>Where San Diego Dance Comes Together—Your All-in-One Resource!</p>
+                <div className="heading">
+                    <h2>A Passion for Community</h2>
+                    <p>Where San Diego Dance Comes Together—Your All-in-One Resource!</p>
+                </div>
+
                 <div className="community-grid">
                     <div className="community-item">
                         <h3>Engage with the Community</h3>
@@ -58,11 +61,6 @@ const Home = () => {
         </ul>
         <blockquote>“I’m not interested in how people move, but what moves them.” - Pina Bausch</blockquote>
       </section> */}
-
-            {/* Footer */}
-            <footer className="footer">
-                <p>Website created by Milana Gorobchenko</p>
-            </footer>
         </div>
     );
 };

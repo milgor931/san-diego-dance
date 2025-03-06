@@ -1,5 +1,23 @@
+.event-calendar-container {
+    /* border: 2px solid black; */
+    width: 90vw;
+    margin: 20px 0px;
+}
+
+.no-events {
+    text-align: center;
+}
+
 .event-date-group {
     margin-bottom: 20px;
+}
+
+.event-month-header {
+    border-top: 5px solid #113e85;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: #113e85;
 }
 
 .event-date-header {
@@ -16,11 +34,12 @@
     justify-content: space-between;
     margin-bottom: 1rem;
     cursor: pointer;
-    transition: background 0.3s;
+    /* background: #f9f9f9; */
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
 }
 
-.event-card-content:hover {
-    background: #f9f9f9;
+.event-card {
+    transition: transform 0.3s ease-in-out;
 }
 
 .event-card:hover {
@@ -38,8 +57,8 @@
 
 .event-card-img-container {
     flex-shrink: 0;
-    /* max-width: 200px; */
-    height: 200px;
+    max-width: 200px;
+    /* height: 200px; */
     /* margin-right: 20px; */
     display: flex;
     align-items: center;
@@ -62,6 +81,11 @@
     overflow: hidden;
     padding: 20px;
     transition: max-height 0.3s ease-in-out, padding 0.3s ease;
+}
+
+.add-to-calendar-btn {
+    background: transparent;
+    color: #09234c;
 }
 
 /* When the accordion is open */
@@ -95,7 +119,7 @@
 
 
 /* For small screen devices */
-@media (max-width: 600px) {
+@media (max-width: 728px) {
     .event-card-header {
         display: flex;
         flex-direction: column;
@@ -111,9 +135,8 @@
     }
 
     .event-card-img-container {
-        width: 100%;
-        max-height: 300px;
-        /* height: 100%; */
+        width: 90vw;
+        /* height: 500px; */
     }
 
     .event-card-img-container img {
@@ -121,4 +144,47 @@
         width: 100%;
         height: 100%;
     }
+}
+
+
+/* TOP EVENT NAVBAR */
+
+.events-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 10px 20px; */
+    /* border: 2px solid white; */
+    color: white;
+    /* width: 100%; */
+}
+
+.events-navbar div {
+    gap: 20px;
+}
+
+.events-navbar input,
+.events-navbar select,
+.events-navbar button {
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.events-navbar input,
+.events-navbar select {
+    background-color: #fff;
+    color: #333;
+}
+
+.events-navbar button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0;
+}
+
+.events-navbar button:hover {
+    background-color: #0056b3;
 }

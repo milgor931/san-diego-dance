@@ -1,0 +1,211 @@
+.community {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f8ff;
+    text-align: center;
+    font-family: Raleway, Nunito, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.load-more-btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.load-more-btn:hover {
+    background-color: #2980b9;
+}
+
+.scroll-to-form {
+    background-color: #113e85;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.scroll-to-form:hover {
+    background-color: #09234c;
+}
+
+.community .heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 50px;
+}
+
+.community h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.community-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.community-cards.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.community-card {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.community-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image img {
+    width: 100%;
+    /* Ensure the width takes up the full container width */
+    height: 300px;
+    /* Maintain aspect ratio of the image */
+    object-fit: cover;
+    /* Preserve aspect ratio without distorting the image */
+    object-position: top;
+    /* Align the image to the top of the container */
+    border-bottom: 5px solid #2c3e50;
+    /* Optional border for separation */
+}
+
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h2 {
+    font-size: 1.8rem;
+    color: #34495e;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card-content .title {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+.card-content .bio {
+    font-size: 1rem;
+    color: #95a5a6;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.social-links a {
+    color: #2980b9;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #1abc9c;
+}
+
+.social-links i {
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover i {
+    transform: scale(1.2);
+}
+
+.community-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 50px 0px;
+    margin-top: 50px;
+}
+
+.community .form-heading {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.community .form-heading h1 {
+    color: white;
+}
+
+.community-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* gap: 10px; */
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    width: 90vw;
+    max-width: 500px;
+}
+
+.community-form input,
+textarea,
+button {
+    width: 90%;
+    font-family: Raleway, Nunito, sans-serif;
+}
+
+
+.community-form-container {
+    overflow: auto;
+    background: linear-gradient(315deg, rgba(101, 0, 94, 1) 3%, rgba(60, 132, 206, 1) 38%, rgba(48, 238, 226, 1) 68%, rgba(255, 25, 25, 1) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
