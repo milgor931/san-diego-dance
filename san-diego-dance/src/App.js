@@ -1,6 +1,7 @@
 // src/App.js
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'; // Use HashRouter
+import ScrollToTop from './components/ScrollToTop';
 
 // Pages
 import Events from './pages/Events';
@@ -21,6 +22,7 @@ function App() {
     <Router>
       <Navbar /> {/* The Navbar will be displayed across all pages */}
       <div className="App">
+      <ScrollToTop />
         <Routes> {/* Define the Routes */}
           <Route path="/" element={<Home />} /> {/* Home route */}
           <Route path="/events" element={<Events />} /> {/* Events route */}

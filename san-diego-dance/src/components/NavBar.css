@@ -23,6 +23,7 @@
 }
 
 .logo h1 a {
+    color: black;
     text-decoration: none;
 }
 
@@ -47,10 +48,12 @@
     font-size: 1rem;
     font-family: Raleway, sans-serif;
     font-weight: 300;
+    transition: font-weight 0.2s ease-in-out;
 }
 
 .nav-links a:hover {
     font-weight: 500;
+    color: #113e85;
 }
 
 /* Mobile Menu Styles */
@@ -67,14 +70,15 @@
 
 .nav-links.mobile {
     display: block;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: -100%;
     background-color: white;
     width: 250px;
     height: 100%;
-    text-align: center;
-    transition: right 0.3s ease-in-out;
+    text-align: left;
+    padding: 20px;
+    transition: width 0.3s ease-in-out;
 }
 
 .nav-links.mobile ul {
@@ -104,7 +108,11 @@
 }
 
 .nav-links.mobile.active ul li a {
-    font-size: 1.5rem;
+    font-size: 1rem;
+}
+
+.nav-links.mobile .indented {
+    margin-left: 20px;
 }
 
 /* Overlay Styles */

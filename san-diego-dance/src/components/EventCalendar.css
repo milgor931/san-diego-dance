@@ -1,6 +1,6 @@
 .event-calendar-container {
     /* border: 2px solid black; */
-    width: 90vw;
+    width: 80vw;
     margin: 20px 0px;
 }
 
@@ -13,11 +13,11 @@
 }
 
 .event-month-header {
-    border-top: 5px solid #113e85;
+    border-top: 5px solid #007bff;
     font-size: 2.5rem;
     font-weight: 900;
     margin-bottom: 20px;
-    color: #113e85;
+    color: #007bff;
 }
 
 .event-date-header {
@@ -44,6 +44,10 @@
 
 .event-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.event-card .event-card-content.open {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -79,7 +83,7 @@
 .event-details {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out, padding 0.3s ease;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
 }
 
 .add-to-calendar-btn {
@@ -124,7 +128,6 @@
     flex-direction: row;
     width: 100%;
 }
-
 
 /* For small screen devices */
 @media (max-width: 728px) {

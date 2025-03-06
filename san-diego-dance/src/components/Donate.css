@@ -1,0 +1,46 @@
+.paypal-donate {
+    width: 70%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #84a4ff, #065ce5);
+    color: white;
+    border-radius: 12px;
+    /* text-align: center; */
+    box-shadow: 0 4px 10px rgba(54, 29, 29, 0.2);
+  }
+  
+  .paypal-donate h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .paypal-donate p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .donate-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    background: #ff9800;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .donate-button:hover {
+    background: #e68900;
+    transform: scale(1.05);
+  }
+  
+  .donate-button:active {
+    transform: scale(0.98);
+  }
+  

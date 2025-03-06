@@ -32,7 +32,10 @@ const Contact = () => {
                 </div> */}
             </div>
 
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className="contact-form"
+                action="https://formspree.io/f/movjogda"
+                method="POST"
+            >
                 <label>
                     Name:
                 </label>

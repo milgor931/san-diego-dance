@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from 'react-router-dom';
 import "./NavBar.css";
+import { HashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
     const [isMobile, setIsMobile] = useState(false); // State to track mobile menu toggle
@@ -40,25 +41,48 @@ const Navbar = () => {
     return (
         <header className="navbar">
             <div className="logo">
-                <h1>San Diego Dance</h1>
+                {/* <Link to="/"><img src="/assets/logo.png"/></Link> */}
+                <h1><Link to="/">San Diego Dance</Link></h1>
             </div>
             <nav
                 ref={navRef}
                 className={`nav-links ${isMobile ? "mobile active" : ""}`}
             >
-                <ul>
-                    <li><Link to="/" onClick={closeMenu}>Home</Link></li>
-                    <li><Link to="/events" onClick={closeMenu}>Events</Link></li>
-                    <li><Link to="/resources" onClick={closeMenu}>Resources</Link></li>
-                    <li><Link to="/community" onClick={closeMenu}>Community</Link></li>
-                    <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
-                </ul>
+                {isMobile
+                    ? <ul>
+                        <li><Link to="/" onClick={closeMenu}></Link></li>
+                        <li><Link to="/events" onClick={closeMenu}>Events</Link></li>
+                        <hr />
+                        <li><Link to="/resources" onClick={closeMenu}>Resources</Link></li>
+                        <li className="indented"><Link to="/grants" onClick={closeMenu} >Grants</Link></li>
+                        <li className="indented"><Link to="/jobs"  onClick={closeMenu} >Job Opportunities</Link></li>
+                        <li className="indented"><Link to="/volunteer"  onClick={closeMenu} >Volunteer Opportunities</Link></li>
+                        <li className="indented"><Link to="/professional-development"  onClick={closeMenu} >Professional Development</Link></li>
+                        <li className="indented"><Link to="/spaces"  onClick={closeMenu} >Spaces</Link></li>
+                        <li className="indented"><Link to="/collaboration"  onClick={closeMenu} >Collaboration</Link></li>
+                        <hr />
+                        <li><Link to="/community" onClick={closeMenu}>Community</Link></li>
+                        <li className="indented"><HashLink smooth to="/community#join-community"  onClick={closeMenu} >Join the Community Board</HashLink></li>
+                        <li className="indented"><HashLink smooth to="/#newsletter-signup" onClick={closeMenu}>Sign up for the Monthly Newsletter</HashLink></li>
+                        <hr />
+                        <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
+                        <hr />
+                        <li><HashLink smooth to="/#donate" onClick={closeMenu} >Donate</HashLink></li>
+                    </ul>
+                    : <ul>
+                        <li><Link to="/" onClick={closeMenu}>Home</Link></li>
+                        <li><Link to="/events" onClick={closeMenu}>Events</Link></li>
+                        <li><Link to="/resources" onClick={closeMenu}>Resources</Link></li>
+                        <li><Link to="/community" onClick={closeMenu}>Community</Link></li>
+                        <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
+                    </ul>
+                }
             </nav>
 
             <span ref={buttonRef}
                 className="menu-toggle"
                 onClick={toggleMenu}>
-                    ☰
+                ☰
             </span>
 
             {/* Overlay */}

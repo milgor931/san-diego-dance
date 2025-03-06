@@ -99,13 +99,6 @@ const EventCalendar = () => {
         return filteredEvents.sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
     };
 
-    const filterByEventType = (events, eventType) => {
-        if (eventType === "any") {
-            return events;
-        }
-        return events.filter(event => event.eventType === eventType);
-    }
-
     const addEvent = () => {
         document.getElementById('add-event').scrollIntoView({ behavior: 'smooth' })
     }
@@ -194,16 +187,21 @@ const EventCard = ({ event }) => {
         <div className={`event-card-content ${isOpen ? 'open' : ''}`} onClick={toggleAccordion}>
             {/* Event Image */}
             <div className="event-card-header">
-                {event.eventImg !== ""
-                    && <div className="event-card-img-container">
-                        <img src={event.eventImg} alt="Event" />
+                {event.eventImg === ""
+                    ? <div className="event-card-img-container">
+                        <img src="/assets/event-default.png" alt="Event" />
                     </div>
+                    : <div className="event-card-img-container">
+                    <img src={event.eventImg} alt="Event" />
+                </div>
                 }
 
                 <div className="event-card-body">
                     <div>
                         <h3 className="event-title">{event.eventTitle}</h3>
-                        <a className="event-location" href={event.eventLocationLink} target="_blank"><p>{event.eventLocation}</p></a>
+                        <a className="event-location" href={event.eventLocationLink} target="_blank">
+                            <p>{event.eventLocation}</p>
+                        </a>
                         <p className="event-time">{convertTime(event.eventStartTime)} - {convertTime(event.eventEndTime)}</p>
 
                         <button className="add-to-calendar-btn" onClick={addToGoogleCalendar}>Add to Google Calendar</button>

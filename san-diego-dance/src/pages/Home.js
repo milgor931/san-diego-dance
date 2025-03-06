@@ -1,6 +1,8 @@
 import React from 'react';
 import './Home.css';
 import NewsletterSignupForm from '../components/NewsletterSignupForm';
+import Donate from '../components/Donate';
+
 
 const Home = () => {
     return (
@@ -14,7 +16,7 @@ const Home = () => {
             </section>
 
             {/* Subscription Section */}
-            <section className="subscription">
+            <section id="newsletter-signup" className="subscription">
                 <NewsletterSignupForm />
             </section>
 
@@ -44,6 +46,8 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            <Donate />
 
             {/* Resources Section */}
             {/* <section className="resources">

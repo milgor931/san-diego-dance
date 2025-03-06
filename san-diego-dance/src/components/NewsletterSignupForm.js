@@ -9,11 +9,11 @@ const MailchimpForm = () => {
             action="https://san-diego-dance.us20.list-manage.com/subscribe/post?u=3d2528d4224f356e743a0a516&amp;id=d096182982&amp;f_id=00bf51e6f0"
             method="post"
             id="mc-embedded-subscribe-form"
+            className="newsletter-form"
             name="mc-embedded-subscribe-form"
-            className="validate"
             target="_blank"
         >
-            <div id="mc_embed_signup_scroll">
+            <div>
                 <h2>Subscribe to Our Monthly Newsletter</h2>
                 <p>Sign up for exclusive access to upcoming events, promotions, and workshops.</p>
                 <div className="mc-field-group">
