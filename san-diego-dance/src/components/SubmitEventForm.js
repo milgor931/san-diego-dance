@@ -12,6 +12,7 @@ function EventForm() {
         eventStartTime: "",
         eventEndTime: "",
         eventLocation: "",
+        eventLocationLink: "",
         eventImg: "",
         eventUrl: "",
         eventDescription: "",
@@ -51,6 +52,7 @@ function EventForm() {
                     eventStartTime: "",
                     eventEndTime: "",
                     eventLocation: "",
+                    eventLocationLink: "",
                     eventUrl: "",
                     eventImg: "",
                     eventDescription: "",
@@ -104,6 +106,9 @@ function EventForm() {
             <div className="form-group">
                 <label htmlFor="eventLocation">Event Location</label>
                 <input id="eventLocation" type="text" name="eventLocation" value={formData.eventLocation} onChange={handleChange} required />
+
+                <label htmlFor="eventLocationLink">Event Address Google Maps Link</label>
+                <input id="eventLocationLink" type="text" name="eventLocationLink" value={formData.eventLocationLink} onChange={handleChange} required />
 
                 <label htmlFor="eventUrl">Event URL (Optional)</label>
                 <input id="eventUrl" type="text" name="eventUrl" value={formData.eventUrl} onChange={handleChange} />

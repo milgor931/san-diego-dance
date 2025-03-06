@@ -132,7 +132,7 @@ const EventCalendar = () => {
                 <button onClick={addEvent}>Add Event</button>
             </div>
 
-            { events.length > 0
+            {events.length > 0
                 ?
                 <div>
                     {Object.keys(eventsByMonth).map((monthYear) => (
@@ -153,9 +153,9 @@ const EventCalendar = () => {
                         </div>
                     ))}
                 </div>
-            
-            : <p className="no-events">No events to show</p>
-        }
+
+                : <p className="no-events">No events to show</p>
+            }
         </div>
     );
 };
@@ -203,7 +203,7 @@ const EventCard = ({ event }) => {
                 <div className="event-card-body">
                     <div>
                         <h3 className="event-title">{event.eventTitle}</h3>
-                        <p className="event-location">{event.eventLocation}</p>
+                        <a className="event-location" href={event.eventLocationLink} target="_blank"><p>{event.eventLocation}</p></a>
                         <p className="event-time">{convertTime(event.eventStartTime)} - {convertTime(event.eventEndTime)}</p>
 
                         <button className="add-to-calendar-btn" onClick={addToGoogleCalendar}>Add to Google Calendar</button>
@@ -211,22 +211,19 @@ const EventCard = ({ event }) => {
                 </div>
             </div>
 
-            <div>
-                {/* Event Details */}
-                <div className="event-details">
-                    {isOpen && (
-                        <>
-                            <p>{event.eventDescription}</p>
-                            <br />
-                            <p><strong>Organizer:</strong>  <br />{event.eventOrganizer}</p>
-                            <br />
-                            <p><strong>Accessibility Notes:</strong>  <br />{event.accessibilityNotes}</p>
-                            <button className="learn-more-btn" onClick={() => window.open(event.eventUrl, "_blank")}>
-                                Learn More
-                            </button>
-                        </>
-                    )}
-                </div>
+            {/* Event Details */}
+            <div className="event-details">
+                {isOpen && (
+                    <>
+                        <p>{event.eventDescription}</p>
+                        <br />
+                        <p><strong>Organizer:</strong> {event.eventOrganizer}</p>
+                        <p><strong>Accessibility Notes:</strong>  <br />{event.accessibilityNotes}</p>
+                        <button className="learn-more-btn" onClick={() => window.open(event.eventUrl, "_blank")}>
+                            Learn More
+                        </button>
+                    </>
+                )}
             </div>
         </div>
     );
