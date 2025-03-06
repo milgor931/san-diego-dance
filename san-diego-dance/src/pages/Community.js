@@ -129,9 +129,9 @@ const Community = () => {
                             <p className="title">{member.title}</p>
                             <p className="bio">{member.bio}</p>
                             <div className="social-links">
-                                {member.website && <a href={member.website} target="_blank" rel="noopener noreferrer"><i className="fas fa-globe"></i></a>}
-                                {member.linkedin && <a href={member.linkedin} target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>}
-                                {member.instagram && <a href={member.instagram} target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>}
+                                {member.website !== "" && <a href={member.website} target="_blank" rel="noopener noreferrer"><i className="fas fa-globe"></i></a>}
+                                {member.linkedin !== "" && <a href={member.linkedin} target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>}
+                                {member.instagram !== "" && <a href={member.instagram} target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>}
                             </div>
                         </div>
                     </div>

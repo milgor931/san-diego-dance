@@ -183,6 +183,46 @@ const EventCard = ({ event }) => {
         window.open(googleCalendarUrl, "_blank");
     }
 
+    const addToAppleCalendar = () => {
+        const title = event.eventTitle;
+        const date = event.eventDate;
+        const start = event.eventStartTime;
+        const end = event.eventEndTime;
+        const location = event.eventLocation;
+        const description = event.eventDescription;
+
+        // Format Date & Time for iCalendar (YYYYMMDDTHHMMSSZ format)
+        const eventStart = new Date(`${date}T${start}:00`).toISOString().replace(/[-:.]/g, "").slice(0, 15) + "Z";
+        const eventEnd = new Date(`${date}T${end}:00`).toISOString().replace(/[-:.]/g, "").slice(0, 15) + "Z";
+
+        // iCalendar File Content
+        const icsContent = `BEGIN:VCALENDAR
+    VERSION:2.0
+    PRODID:-//Your App//EN
+    BEGIN:VEVENT
+    UID:${Date.now()}@yourdomain.com
+    DTSTAMP:${new Date().toISOString().replace(/[-:.]/g, "").slice(0, 15)}Z
+    DTSTART:${eventStart}
+    DTEND:${eventEnd}
+    SUMMARY:${title}
+    DESCRIPTION:${description}
+    LOCATION:${location}
+    END:VEVENT
+    END:VCALENDAR`;
+
+        // Create and Download .ics File
+        const blob = new Blob([icsContent], { type: "text/calendar" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${title}.ics`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+
+
     return (
         <div className={`event-card-content ${isOpen ? 'open' : ''}`} onClick={toggleAccordion}>
             {/* Event Image */}
@@ -200,11 +240,12 @@ const EventCard = ({ event }) => {
                     <div>
                         <h3 className="event-title">{event.eventTitle}</h3>
                         <p><a className="event-location" href={event.eventLocationLink} target="_blank">
-                            {event.eventLocation}
+                            <i class="fa-solid fa-location-pin"></i> {event.eventLocation}
                         </a></p>
                         <p className="event-time">{convertTime(event.eventStartTime)} - {convertTime(event.eventEndTime)}</p>
 
-                        <button className="add-to-calendar-btn" onClick={addToGoogleCalendar}>Add to Google Calendar</button>
+                        <button className="add-to-calendar-btn google" onClick={addToGoogleCalendar}>Add to Google Calendar</button>
+                        <button className="add-to-calendar-btn apple" onClick={addToAppleCalendar}>Add to Apple Calendar</button>
                     </div>
                 </div>
             </div>
@@ -216,7 +257,7 @@ const EventCard = ({ event }) => {
                         <p>{event.eventDescription}</p>
                         <br />
                         <p><strong>Organizer:</strong> {event.eventOrganizer}</p>
-                        <p><strong>Accessibility Notes:</strong>  <br />{event.accessibilityNotes}</p>
+                        {event.accessibilityNotes !== "" && <p><strong>Accessibility Notes:</strong>  <br />{event.accessibilityNotes}</p>}
                         <button className="learn-more-btn" onClick={() => window.open(event.eventUrl, "_blank")}>
                             Learn More
                         </button>

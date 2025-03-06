@@ -91,7 +91,12 @@
     color: #113e85;
     border: 2px solid #adcdff;
     padding: 2px;
-    margin: 0;
+    margin: 5px;
+}
+
+.add-to-calendar-btn.apple {
+    color: orangered;
+    border: 2px solid rgb(245, 125, 82, 0.5);
 }
 
 /* When the accordion is open */
