@@ -41,7 +41,7 @@ const Navbar = () => {
     return (
         <header className="navbar">
             <div className="logo">
-                {/* <Link to="/"><img src="/assets/logo.png"/></Link> */}
+                {/* <Link to="/"><img src="/assets/logo-bg.png"/></Link> */}
                 <h1><Link to="/">San Diego Dance</Link></h1>
             </div>
             <nav

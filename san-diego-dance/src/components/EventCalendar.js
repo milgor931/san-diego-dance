@@ -192,16 +192,16 @@ const EventCard = ({ event }) => {
                         <img src="/assets/event-default.png" alt="Event" />
                     </div>
                     : <div className="event-card-img-container">
-                    <img src={event.eventImg} alt="Event" />
-                </div>
+                        <img src={event.eventImg} alt="Event" />
+                    </div>
                 }
 
                 <div className="event-card-body">
                     <div>
                         <h3 className="event-title">{event.eventTitle}</h3>
-                        <a className="event-location" href={event.eventLocationLink} target="_blank">
-                            <p>{event.eventLocation}</p>
-                        </a>
+                        <p><a className="event-location" href={event.eventLocationLink} target="_blank">
+                            {event.eventLocation}
+                        </a></p>
                         <p className="event-time">{convertTime(event.eventStartTime)} - {convertTime(event.eventEndTime)}</p>
 
                         <button className="add-to-calendar-btn" onClick={addToGoogleCalendar}>Add to Google Calendar</button>
