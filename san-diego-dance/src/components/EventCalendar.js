@@ -3,7 +3,7 @@ import './EventCalendar.css';
 import { DateTime } from "luxon";
 
 const daysOfTheWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-const eventTypes = ["any", "class", "workshop", "performance"];
+const eventTypes = ["any", "class", "workshop", "performance", "other"];
 
 const formatDate = (dateString) => {
     const date = DateTime.fromISO(dateString, { zone: "America/Los_Angeles" });
@@ -55,7 +55,7 @@ const EventCalendar = () => {
     const [eventsByMonth, setEventsByMonth] = useState([]);
     const [selectedType, setSelectedType] = useState("any");
 
-    const [visibleCount, setVisibleCount] = useState(10);
+    const [visibleCount, setVisibleCount] = useState(5);
 
     useEffect(() => {
         fetch("https://san-diego-dance-default-rtdb.firebaseio.com/events.json")
@@ -88,11 +88,13 @@ const EventCalendar = () => {
         // Combine original events with the auto-generated class events
         let allEvents = [...nonClassEvents, ...classEvents];
 
-        let upcomingEvents = filterUpcomingEvents(allEvents).slice(0, visibleCount);
+        let upcomingEvents = filterUpcomingEvents(allEvents);
 
-        const filteredEvents = selectedType === "any"
+        let filteredEvents = selectedType === "any"
             ? upcomingEvents
             : upcomingEvents.filter(event => event.eventType === selectedType);
+
+        filteredEvents = filteredEvents;
 
         setEvents(filteredEvents);
 
@@ -187,9 +189,9 @@ const EventCalendar = () => {
                             ))}
                         </div>
                     ))}
-                    {visibleCount < eventsData.length && (
+                    {/* {visibleCount < eventsData.length && (
                         <button onClick={loadMore} className="load-more-btn">Load More</button>
-                    )}
+                    )} */}
                 </div>
                 : <p className="no-events">No events to show</p>
             }
