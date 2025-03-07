@@ -1,115 +1,159 @@
 import React, { useState, useEffect } from "react";
 import './EventCalendar.css';
+import { DateTime } from "luxon";
 
+const daysOfTheWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 const eventTypes = ["any", "class", "workshop", "performance"];
 
 const formatDate = (dateString) => {
-    const date = new Date(dateString);
+    const date = DateTime.fromISO(dateString, { zone: "America/Los_Angeles" });
 
-    // Set up the options for the desired date format
-    const options = {
-        // year: 'numeric',
-        month: 'long',
-        // day: 'numeric',
-        // timeZone: 'America/Los_Angeles', // Specifies the time zone
-    };
+    // Use Luxon to format the date
+    const formattedDate = date.toLocaleString({ weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const dayOfWeek = daysOfTheWeek[date.weekday - 1]; // Luxon uses 1-7 for weekdays (1 = Monday)
 
-    // Use Intl.DateTimeFormat to format the date in the specified time zone
-    const formatter = new Intl.DateTimeFormat('en-US', options);
-
-
-    // return formatter.format(date);
-
-    return `${formatter.format(date)} ${date.getDate() + 1}, ${date.getFullYear()} `
+    return `${formattedDate}`;
 };
 
 
+function getDayOfWeek(dateString) {
+    const date = DateTime.fromISO(dateString); // Parse the date string into a Luxon DateTime object
+    return date.toFormat('cccc'); // Get the full name of the day
+}
+
+// Helper function to get the next weekday date (e.g., next Monday)
+const getNextWeekdayDate = (targetDay) => {
+    const today = DateTime.now().setZone("America/Los_Angeles");
+    const targetDayIndex = daysOfTheWeek.indexOf(targetDay);
+    const currentDayIndex = today.weekday - 1; // Luxon uses 1-7 for weekdays (1 = Monday)
+
+    // If the target day is the same as today, we want to get the next week's same day
+    let daysToAdd = targetDayIndex - currentDayIndex;
+    if (daysToAdd <= 0) {
+        daysToAdd += 7; // Move to the next week
+    }
+
+    return today.plus({ days: daysToAdd });
+};
 
 // Helper function to get the month and year in a format like "February 2025"
 const getMonthYear = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+    const date = DateTime.fromISO(dateString, { zone: "America/Los_Angeles" });
+    return date.toLocaleString({ year: 'numeric', month: 'long' });
 };
 
 function convertTime(time24) {
-    let [hours, minutes] = time24.split(":").map(Number);
-    let period = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12 || 12; // Convert 0 to 12 for midnight
-    return `${hours}:${minutes.toString().padStart(2, "0")} ${period}`;
+    const time = DateTime.fromFormat(time24, 'HH:mm', { zone: 'America/Los_Angeles' });
+    return time.toFormat('h:mm a'); // Luxon will handle AM/PM formatting
 }
 
 const EventCalendar = () => {
 
+    const [eventsData, setEventsData] = useState([]);
     const [events, setEvents] = useState([]);
     const [eventsByDate, setEventsByDate] = useState([]);
     const [eventsByMonth, setEventsByMonth] = useState([]);
     const [selectedType, setSelectedType] = useState("any");
 
-    useEffect(() => {
+    const [visibleCount, setVisibleCount] = useState(10);
 
+    useEffect(() => {
         fetch("https://san-diego-dance-default-rtdb.firebaseio.com/events.json")
             .then(response => response.json())
             .then(data => {
-                let upcomingEvents = filterUpcomingEvents(Object.values(data));
-
-                const filteredEvents = selectedType === "any"
-                    ? upcomingEvents
-                    : upcomingEvents.filter(event => event.eventType === selectedType);
-
-                setEvents(filteredEvents);
-
-                // Group events by their eventDate
-                const byDate = filteredEvents.reduce((acc, event) => {
-                    if (!acc[event.eventDate]) {
-                        acc[event.eventDate] = [];
-                    }
-                    acc[event.eventDate].push(event);
-                    return acc;
-                }, {});
-
-                setEventsByDate(byDate);
-
-                // Group events by month-year (e.g., "February 2025")
-                const byMonth = filteredEvents.reduce((acc, event) => {
-                    const monthYear = getMonthYear(event.eventDate);
-                    if (!acc[monthYear]) {
-                        acc[monthYear] = {};
-                    }
-
-                    // Now group events by the exact date within each month-year
-                    const eventDate = event.eventDate;
-                    if (!acc[monthYear][eventDate]) {
-                        acc[monthYear][eventDate] = [];
-                    }
-
-                    acc[monthYear][eventDate].push(event);
-                    return acc;
-                }, {});
-                setEventsByMonth(byMonth);
+                setEventsData(Object.values(data));
             })
             .catch(error => console.error("Error fetching events:", error));
-    }, [selectedType])
+    }, [])
+
+    useEffect(() => {
+
+        let classEvents = [];
+
+        eventsData.forEach(event => {
+            if (event.eventType === "class") {
+                const weekday = getDayOfWeek(event.eventDate);
+                const nextClassDate = getNextWeekdayDate(weekday); // Get the next weekday (e.g., Monday)
+                for (let i = 0; i <= 3; i++) {
+                    let newDate = nextClassDate.plus({ weeks: i }); // Add 1 week each iteration
+                    
+                    let newEvent = { ...event, eventDate: newDate.toISODate() };
+                    classEvents.push(newEvent);
+                }
+            }
+        });
+
+        let nonClassEvents = eventsData.filter(event => event.eventType !== "class")
+
+        // Combine original events with the auto-generated class events
+        let allEvents = [...nonClassEvents, ...classEvents];
+
+        let upcomingEvents = filterUpcomingEvents(allEvents).slice(0, visibleCount);
+
+        const filteredEvents = selectedType === "any"
+            ? upcomingEvents
+            : upcomingEvents.filter(event => event.eventType === selectedType);
+
+        setEvents(filteredEvents);
+
+        // Group events by their eventDate
+        const byDate = filteredEvents.reduce((acc, event) => {
+            if (!acc[event.eventDate]) {
+                acc[event.eventDate] = [];
+            }
+            acc[event.eventDate].push(event);
+            return acc;
+        }, {});
+
+        setEventsByDate(byDate);
+
+        // Group events by month-year (e.g., "February 2025")
+        const byMonth = filteredEvents.reduce((acc, event) => {
+            const monthYear = getMonthYear(event.eventDate);
+            if (!acc[monthYear]) {
+                acc[monthYear] = {};
+            }
+
+            // Now group events by the exact date within each month-year
+            const eventDate = event.eventDate;
+            if (!acc[monthYear][eventDate]) {
+                acc[monthYear][eventDate] = [];
+            }
+
+            acc[monthYear][eventDate].push(event);
+            return acc;
+        }, {});
+        setEventsByMonth(byMonth);
+    }, [eventsData, selectedType, visibleCount])
 
     // Filter events to show only those that are after or on today's date
     const filterUpcomingEvents = (events) => {
-        const todayDate = new Date().getTime();
-        const filteredEvents = events.filter(event => new Date(event.eventDate).getTime() >= todayDate && event.approved);
+        const now = DateTime.now();
+        const filteredEvents = events.filter(event => {
+            const eventDateTime = DateTime.fromISO(`${event.eventDate}T${event.eventStartTime}`, { zone: "America/Los_Angeles" });
+            return eventDateTime >= now && event.approved;
+        });
 
         // Sort events by eventDate in ascending order
-        return filteredEvents.sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
+        return filteredEvents.sort((a, b) => {
+            const eventADateTime = DateTime.fromISO(`${a.eventDate}T${a.eventStartTime}`, { zone: "America/Los_Angeles" });
+            const eventBDateTime = DateTime.fromISO(`${b.eventDate}T${b.eventStartTime}`, { zone: "America/Los_Angeles" });
+            return eventADateTime - eventBDateTime;
+        });
     };
 
     const addEvent = () => {
         document.getElementById('add-event').scrollIntoView({ behavior: 'smooth' })
     }
 
+    const loadMore = () => {
+        setVisibleCount(visibleCount + 10);
+    };
+
     return (
         <div className="event-calendar-container">
-
-            <div class="events-navbar">
+            <div className="events-navbar">
                 <div>
-                    {/* <input type="date" id="eventDate" /> */}
-
                     <select
                         id="eventType"
                         value={selectedType}
@@ -121,13 +165,11 @@ const EventCalendar = () => {
                     </select>
                 </div>
 
-
                 <button onClick={addEvent}>Add Event</button>
             </div>
 
             {events.length > 0
-                ?
-                <div>
+                ? <div>
                     {Object.keys(eventsByMonth).map((monthYear) => (
                         <div key={monthYear} className="event-month-group">
                             <h2 className="event-month-header">{monthYear}</h2>
@@ -145,8 +187,10 @@ const EventCalendar = () => {
                             ))}
                         </div>
                     ))}
+                    {visibleCount < eventsData.length && (
+                        <button onClick={loadMore} className="load-more-btn">Load More</button>
+                    )}
                 </div>
-
                 : <p className="no-events">No events to show</p>
             }
         </div>
@@ -222,16 +266,12 @@ const EventCard = ({ event }) => {
         URL.revokeObjectURL(url);
     };
 
-
     return (
         <div className={`event-card-content ${isOpen ? 'open' : ''}`} onClick={toggleAccordion}>
             {/* Event Image */}
             <div className="event-card-header">
-                {event.eventImg === ""
-                    ? <div className="event-card-img-container">
-                        <img src="/assets/event-default.png" alt="Event" />
-                    </div>
-                    : <div className="event-card-img-container">
+                {event.eventImg !== ""
+                    && <div className="event-card-img-container">
                         <img src={event.eventImg} alt="Event" />
                     </div>
                 }
@@ -239,13 +279,14 @@ const EventCard = ({ event }) => {
                 <div className="event-card-body">
                     <div>
                         <h3 className="event-title">{event.eventTitle}</h3>
-                        <p><a className="event-location" href={event.eventLocationLink} target="_blank">
-                            <i class="fa-solid fa-location-pin"></i> {event.eventLocation}
-                        </a></p>
                         <p className="event-time">{convertTime(event.eventStartTime)} - {convertTime(event.eventEndTime)}</p>
-
-                        <button className="add-to-calendar-btn google" onClick={addToGoogleCalendar}>Add to Google Calendar</button>
-                        <button className="add-to-calendar-btn apple" onClick={addToAppleCalendar}>Add to Apple Calendar</button>
+                        <p><a className="event-location" href={event.eventLocationLink} target="_blank">
+                            <i className="fa-solid fa-location-pin"></i> {event.eventLocation}
+                        </a></p>
+                        <div className="calendar-buttons">
+                            <button className="add-to-calendar-btn google" onClick={addToGoogleCalendar}>Add to Google Calendar</button>
+                            <button className="add-to-calendar-btn apple" onClick={addToAppleCalendar}>Add to Apple Calendar</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -254,10 +295,26 @@ const EventCard = ({ event }) => {
             <div className="event-details">
                 {isOpen && (
                     <>
-                        <p>{event.eventDescription}</p>
+                        {event.eventDescription.split("\n").map((line, index) => (
+                            <p key={index}>{line}</p>
+                        ))}
+
                         <br />
+
                         <p><strong>Organizer:</strong> {event.eventOrganizer}</p>
-                        {event.accessibilityNotes !== "" && <p><strong>Accessibility Notes:</strong>  <br />{event.accessibilityNotes}</p>}
+
+                        {event.accessibilityNotes !== "" && (
+                            <p>
+                                <strong>Accessibility Notes:</strong> <br />
+                                {event.accessibilityNotes.split("\n").map((line, index) => (
+                                    <span key={index}>
+                                        {line}
+                                        <br />
+                                    </span>
+                                ))}
+                            </p>
+                        )}
+
                         <button className="learn-more-btn" onClick={() => window.open(event.eventUrl, "_blank")}>
                             Learn More
                         </button>
@@ -266,8 +323,7 @@ const EventCard = ({ event }) => {
             </div>
         </div>
     );
-};
-
-
+}
 
 export default EventCalendar;
+

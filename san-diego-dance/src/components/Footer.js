@@ -24,12 +24,14 @@ const Footer = () => {
                 <div className="footer-section">
                     <h4>Community</h4>
                     <ul>
+                        <li><Link to="/events">Community Events</Link></li>
+                        <li><HashLink smooth to="/events#add-event">Add an Event</HashLink></li>
                         <li><HashLink smooth to="/community#join-community">Join the Community Board</HashLink></li>
                         <li><HashLink smooth to="/#newsletter-signup">Sign up for the Monthly Newsletter</HashLink></li>
                     </ul>
                 </div>
 
-                {/* Community & Engagement Section */}
+                {/* Support Section */}
                 <div className="footer-section">
                     <h4>Support</h4>
                     <ul>

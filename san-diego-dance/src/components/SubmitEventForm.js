@@ -57,6 +57,7 @@ function EventForm() {
                     eventImg: "",
                     eventDescription: "",
                     accessibilityNotes: "",
+                    approved: false
                 });
             } else {
                 setMessage("Error submitting event. Please try again.");
