@@ -285,7 +285,7 @@ const EventCard = ({ event }) => {
                         </a></p>
                         <div className="calendar-buttons">
                             <button className="add-to-calendar-btn google" onClick={addToGoogleCalendar}>Add to Google Calendar</button>
-                            <button className="add-to-calendar-btn apple" onClick={addToAppleCalendar}>Add to Apple Calendar</button>
+                            {/* <button className="add-to-calendar-btn apple" onClick={addToAppleCalendar}>Add to Apple Calendar</button> */}
                         </div>
                     </div>
                 </div>
