@@ -76,7 +76,7 @@ const EventCalendar = () => {
                 const nextClassDate = getNextWeekdayDate(weekday); // Get the next weekday (e.g., Monday)
                 for (let i = 0; i <= 3; i++) {
                     let newDate = nextClassDate.plus({ weeks: i }); // Add 1 week each iteration
-                    
+
                     let newEvent = { ...event, eventDate: newDate.toISODate() };
                     classEvents.push(newEvent);
                 }
@@ -130,7 +130,7 @@ const EventCalendar = () => {
 
     // Filter events to show only those that are after or on today's date
     const filterUpcomingEvents = (events) => {
-        const now = DateTime.now();
+        const now = DateTime.now().setZone("America/Los_Angeles");
         const filteredEvents = events.filter(event => {
             const eventDateTime = DateTime.fromISO(`${event.eventDate}T${event.eventStartTime}`, { zone: "America/Los_Angeles" });
             return eventDateTime >= now && event.approved;
@@ -317,9 +317,11 @@ const EventCard = ({ event }) => {
                             </p>
                         )}
 
-                        <button className="learn-more-btn" onClick={() => window.open(event.eventUrl, "_blank")}>
-                            Learn More
-                        </button>
+                        {event.eventURL !== ""
+                            && <button className="learn-more-btn" onClick={() => window.open(event.eventUrl, "_blank")}>
+                                Learn More
+                            </button>
+                        }
                     </>
                 )}
             </div>

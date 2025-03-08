@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 import "./Footer.css";
 
-const Footer = () => {
+const Footer = ({resourceLinks}) => {
     return (
         <footer className="footer">
             <div className="footer-container">
@@ -11,12 +11,9 @@ const Footer = () => {
                 <div className="footer-section">
                     <h4>Resources</h4>
                     <ul>
-                        <li><Link to="/grants">Grants</Link></li>
-                        <li><Link to="/jobs">Job Opportunities</Link></li>
-                        <li><Link to="/volunteer">Volunteer Opportunities</Link></li>
-                        <li><Link to="/professional-development">Professional Development</Link></li>
-                        <li><Link to="/spaces">Spaces</Link></li>
-                        <li><Link to="/collaboration">Collaboration</Link></li>
+                        {resourceLinks.map((resource, index) => (
+                            <li><Link to={resource.link}>{resource.name}</Link></li>
+                        ))}
                     </ul>
                 </div>
 
@@ -52,8 +49,7 @@ const Footer = () => {
 
             {/* Footer Bottom */}
             <div className="footer-bottom">
-                {/* <p>Website made by <a href="https://www.milana-gorobchenko.com" target="_blank" className="footer-link"> Milana Gorobchenko</a></p> */}
-                <p>Website made by Milana Gorobchenko</p>
+                <p>Website made by <a href="https://www.milana-gorobchenko.com" target="_blank" className="footer-link"> Milana Gorobchenko</a></p>
             </div>
         </footer>
     );

@@ -1,6 +1,8 @@
 .resources {
     text-align: center; 
     font-family: Raleway, Nunito, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .resources .heading {
@@ -121,14 +123,6 @@
     padding: 20px;
 }
 
-.newsletter-signup-form {
-    margin: 50px;
-}
-
-.newsletter-signup-form form {
-    background-color: aliceblue;
-}
-
 @media (max-width: 768px) {
     .gallery {
         grid-template-columns: repeat(1, minmax(250px, 1fr));
@@ -136,5 +130,71 @@
 
     .image-container {
         height: 200px;
+    }
+}
+
+
+/* Form Styles */
+.resource-form {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 8px;
+    width: 60%;
+    margin: 40px auto;
+}
+
+.resource-form h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.resource-form label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: left;
+}
+
+.resource-form input,
+.resource-form textarea {
+    width: 95%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.resource-form button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.resource-form button:hover {
+    background-color: #45a049;
+}
+
+.resource-form button:active {
+    background-color: #388e3c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .resource-form {
+        width: 80%;
     }
 }

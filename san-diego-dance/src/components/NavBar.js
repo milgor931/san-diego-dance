@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import "./NavBar.css";
 import { HashLink } from 'react-router-hash-link';
 
-const Navbar = () => {
+const Navbar = ({ resourceLinks }) => {
     const [isMobile, setIsMobile] = useState(false); // State to track mobile menu toggle
     const navRef = useRef(null); // Reference to the nav element
     const buttonRef = useRef(null); // Reference to the button element
@@ -54,15 +54,15 @@ const Navbar = () => {
                         <li><Link to="/events" onClick={closeMenu}>Events</Link></li>
                         <hr />
                         <li><Link to="/resources" onClick={closeMenu}>Resources</Link></li>
-                        <li className="indented"><Link to="/grants" onClick={closeMenu} >Grants</Link></li>
-                        <li className="indented"><Link to="/jobs"  onClick={closeMenu} >Job Opportunities</Link></li>
-                        <li className="indented"><Link to="/volunteer"  onClick={closeMenu} >Volunteer Opportunities</Link></li>
-                        <li className="indented"><Link to="/professional-development"  onClick={closeMenu} >Professional Development</Link></li>
-                        <li className="indented"><Link to="/spaces"  onClick={closeMenu} >Spaces</Link></li>
-                        <li className="indented"><Link to="/collaboration"  onClick={closeMenu} >Collaboration</Link></li>
+
+                        {resourceLinks.map((resource, index) => (
+                            <li key={index} className="indented">
+                                <Link to={resource.link} onClick={closeMenu} >{resource.name}</Link>
+                            </li>
+                        ))}
                         <hr />
                         <li><Link to="/community" onClick={closeMenu}>Community</Link></li>
-                        <li className="indented"><HashLink smooth to="/community#join-community"  onClick={closeMenu} >Join the Community Board</HashLink></li>
+                        <li className="indented"><HashLink smooth to="/community#join-community" onClick={closeMenu} >Join the Community Board</HashLink></li>
                         <li className="indented"><HashLink smooth to="/#newsletter-signup" onClick={closeMenu}>Sign up for the Monthly Newsletter</HashLink></li>
                         <hr />
                         <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>

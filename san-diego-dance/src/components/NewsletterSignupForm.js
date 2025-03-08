@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion"; // Import motion for animations
 import "./NewsletterSignupForm.css"; // External CSS for styles
 
 const MailchimpForm = () => {
@@ -13,29 +14,45 @@ const MailchimpForm = () => {
             name="mc-embedded-subscribe-form"
             target="_blank"
         >
-            <div>
+            <motion.div
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+            >
                 <h2>Subscribe to Our Monthly Newsletter</h2>
                 <p>Sign up for exclusive access to upcoming events, promotions, and workshops.</p>
-                <div className="mc-field-group">
-                    <input
-                        type="email"
-                        name="EMAIL"
-                        className="required email"
-                        id="mce-EMAIL"
-                        required
-                        value={email}
-                        placeholder="Enter Email"
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" className="button" value="Subscribe" />
-                </div>
-                <div id="mce-responses" className="clear foot">
-                    <div className="response" id="mce-error-response" style={{ display: "none" }}></div>
-                    <div className="response" id="mce-success-response" style={{ display: "none" }}></div>
-                </div>
-                <div aria-hidden="true" style={{ position: "absolute", left: "-5000px" }}>
-                    <input type="text" name="b_3d2528d4224f356e743a0a516_d096182982" tabIndex="-1" value="" />
-                </div>
+            </motion.div>
+
+            <div className="mc-field-group">
+                <motion.input
+                    type="email"
+                    name="EMAIL"
+                    className="required email"
+                    id="mce-EMAIL"
+                    required
+                    value={email}
+                    placeholder="Enter Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    whileFocus={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                />
+                <motion.input
+                    type="submit"
+                    name="subscribe"
+                    id="mc-embedded-subscribe"
+                    className="button"
+                    value="Subscribe"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.2 }}
+                />
+            </div>
+
+            <div id="mce-responses" className="clear foot">
+                <div className="response" id="mce-error-response" style={{ display: "none" }}></div>
+                <div className="response" id="mce-success-response" style={{ display: "none" }}></div>
+            </div>
+            <div aria-hidden="true" style={{ position: "absolute", left: "-5000px" }}>
+                <input type="text" name="b_3d2528d4224f356e743a0a516_d096182982" tabIndex="-1" value="" />
             </div>
         </form>
     );
