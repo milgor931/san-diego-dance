@@ -17,10 +17,8 @@
 }
 
 .footer-section {
-    flex: 1;
-    min-width: 200px;
     margin-bottom: 20px;
-    padding: 0px 50px;
+    width: fit-content;
 }
 
 .footer-section h4 {

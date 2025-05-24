@@ -11,7 +11,8 @@ const PayPalDonate = () => {
       <p>Every donation makes a difference—help us keep dance thriving!</p>
 
       <a
-        href="https://www.paypal.com/donate/?business=672QG4GUL2MTL&no_recurring=0&item_name=Your+donation+sustains+and+grows+San+Diego+Dance%2C+fostering+a+thriving%2C+inclusive+community+for+artists+and+movement+lovers.+&currency_code=USD"
+        href="https://account.venmo.com/u/Milana-Gorobchenko"
+        // href="https://www.paypal.com/donate/?business=672QG4GUL2MTL&no_recurring=0&item_name=Your+donation+sustains+and+grows+San+Diego+Dance%2C+fostering+a+thriving%2C+inclusive+community+for+artists+and+movement+lovers.+&currency_code=USD"
         target="_blank"
         rel="noopener noreferrer"
         className="donate-button"

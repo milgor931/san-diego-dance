@@ -14,14 +14,9 @@ const MailchimpForm = () => {
             name="mc-embedded-subscribe-form"
             target="_blank"
         >
-            <motion.div
-                initial={{ opacity: 0, y: -30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-            >
+
                 <h2>Subscribe to Our Monthly Newsletter</h2>
                 <p>Sign up for exclusive access to upcoming events, promotions, and workshops.</p>
-            </motion.div>
 
             <div className="mc-field-group">
                 <motion.input

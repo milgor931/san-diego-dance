@@ -30,7 +30,6 @@
     color: white;
     font-size: 1.8rem;
     margin-bottom: 10px;
-    animation: fadeIn 2s ease-in-out;
 }
 
 /* Animate the paragraph text */
@@ -38,7 +37,6 @@
     color: black;
     font-size: 1rem;
     margin-bottom: 20px;
-    animation: fadeIn 2s ease-in-out 1s;
 }
 
 /* Add animation for the form input fields */

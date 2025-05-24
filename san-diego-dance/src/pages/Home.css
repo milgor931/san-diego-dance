@@ -15,19 +15,16 @@
     padding: 20px;
     background: linear-gradient(135deg, rgba(48, 92, 137, 0.9), rgba(0, 115, 230, 0.8)), url("/public/assets/floor.png") no-repeat center center;
     background-size: cover;
-    animation: fadeIn 1.5s ease-in-out;
 }
 
 .hero h1 {
     font-size: 2.5rem;
     font-weight: bold;
-    animation: slideUp 1.2s ease-in-out;
 }
 
 .hero p {
     font-size: 1.5rem;
     font-weight: 300;
-    animation: fadeIn 1.8s ease-in-out;
 }
 
 /* SUBSCRIPTION SECTION */
@@ -43,11 +40,7 @@
 
 /* COMMUNITY SECTION */
 .home-container .community {
-    /* padding: 50px 0px; */
     padding-bottom: 50px;
-    /* background-color: #3498db; */
-    background: linear-gradient(180deg,  #3498db, white);
-    /* background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 245, 0.9)); */
 }
 
 .community .heading {
@@ -107,24 +100,6 @@
         transform: translateY(0);
         opacity: 1;
     }
-}
-
-.wave-container {
-    width: 100vw;
-    overflow: hidden;
-    line-height: 0;
-    position: relative;
-    background-color: transparent;
-    border: none;
-    margin: 0;
-    padding: 0;
-
-}
-
-.wave-container svg {
-    /* display: block; */
-    width: 100vw;
-    height: auto;
 }
 
 /* For small screen devices */

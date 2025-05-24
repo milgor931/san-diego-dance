@@ -173,8 +173,9 @@
     }
 
     .event-card-img-container {
-        width: 90vw;
-        display: none;
+        width: 100%;
+        height: auto;
+        /* display: none; */
     }
 
     .event-card-img-container img {

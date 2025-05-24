@@ -94,7 +94,8 @@ const EventCalendar = () => {
             ? upcomingEvents
             : upcomingEvents.filter(event => event.eventType === selectedType);
 
-        filteredEvents = filteredEvents;
+        // filteredEvents = filteredEvents;
+        filteredEvents = filteredEvents.slice(0, visibleCount); 
 
         setEvents(filteredEvents);
 
@@ -149,7 +150,7 @@ const EventCalendar = () => {
     }
 
     const loadMore = () => {
-        setVisibleCount(visibleCount + 10);
+        setVisibleCount(visibleCount + 5);
     };
 
     return (
@@ -189,9 +190,9 @@ const EventCalendar = () => {
                             ))}
                         </div>
                     ))}
-                    {/* {visibleCount < eventsData.length && (
+                    {visibleCount < eventsData.length && (
                         <button onClick={loadMore} className="load-more-btn">Load More</button>
-                    )} */}
+                    )}
                 </div>
                 : <p className="no-events">No events to show</p>
             }

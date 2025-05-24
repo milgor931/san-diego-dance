@@ -21,23 +21,8 @@ const Home = () => {
 
             {/* Subscription Section */}
             <section id="newsletter-signup" className="subscription">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                >
-                    <NewsletterSignupForm />
-                </motion.div>
+                <NewsletterSignupForm />
             </section>
-
-
-
-            {/* SVG Blob Transition */}
-            {/* <div className="wave-container flip">
-                <svg viewBox="0 0 1440 320">
-                    <path fill="#3498db" d="M0,256L48,229.3C96,203,192,149,288,133.3C384,117,480,139,576,160C672,181,768,203,864,181.3C960,160,1056,96,1152,101.3C1248,107,1344,181,1392,218.7L1440,256L1440,320L0,320Z"></path>
-                </svg>
-            </div> */}
 
             {/* Community Engagement Section */}
             <section className="community">
@@ -87,13 +72,6 @@ const Home = () => {
 
             <div className="donate-section">
                 <Donate />
-            </div>
-
-            {/* Final Wave */}
-            <div className="wave-container">
-                <svg viewBox="0 0 1440 320">
-                    <path fill="#2c3e50" d="M0,224L48,234.7C96,245,192,267,288,245.3C384,224,480,160,576,144C672,128,768,160,864,192C960,224,1056,256,1152,245.3C1248,235,1344,181,1392,154.7L1440,128L1440,320L0,320Z"></path>
-                </svg>
             </div>
 
         </div>
