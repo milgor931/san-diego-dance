@@ -2,6 +2,8 @@ import React from "react";
 import "./Home.css";
 import NewsletterSignupForm from "../components/NewsletterSignupForm";
 import Donate from "../components/Donate";
+import BulletinBoard from "../components/BulletinBoard";
+
 import { motion } from "framer-motion";
 
 const Home = () => {
@@ -18,6 +20,8 @@ const Home = () => {
                     <p>More Than Movement—A Community.</p>
                 </motion.div>
             </section>
+
+            <BulletinBoard />
 
             {/* Subscription Section */}
             <section id="newsletter-signup" className="subscription">

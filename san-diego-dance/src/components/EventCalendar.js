@@ -55,7 +55,7 @@ const EventCalendar = () => {
     const [eventsByMonth, setEventsByMonth] = useState([]);
     const [selectedType, setSelectedType] = useState("any");
 
-    const [visibleCount, setVisibleCount] = useState(5);
+    const [visibleCount, setVisibleCount] = useState(10);
 
     useEffect(() => {
         fetch("https://san-diego-dance-default-rtdb.firebaseio.com/events.json")
@@ -318,7 +318,7 @@ const EventCard = ({ event }) => {
                             </p>
                         )}
 
-                        {event.eventURL !== ""
+                        {event.eventUrl !== ""
                             && <button className="learn-more-btn" onClick={() => window.open(event.eventUrl, "_blank")}>
                                 Learn More
                             </button>

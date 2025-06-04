@@ -1,0 +1,130 @@
+.bulletin-board {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #f9f5f2;
+    background-image: url("/public/assets/bulletinboard.jpg");
+    background-repeat: repeat;
+    background-position: top center;
+}
+
+.bulletin-header {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    background-color: #ff6f61;
+    border-radius: 20px;
+    padding: 20px;
+    border: solid 2px white;
+    text-shadow: 4px 6px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.bulletin-header h2 {
+    margin: 0;
+}
+
+.bulletin-header span, a {
+    font-size: 1rem;
+    color: white;
+    margin-top: 20px;
+}
+
+.bulletin-header a {
+    background-color: white;
+    border-radius: 20px;
+    padding: 2px 8px;
+    color: #ff6f61;
+    text-decoration: none;
+}
+
+/* .bulletin-links {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.bulletin-links a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: #0073e6;
+    border-radius: 20px;
+    padding: 10px;
+    border: solid 2px white;
+    text-shadow: 4px 6px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+} */
+
+.bulletin-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.bulletin-item {
+    position: relative;
+    width: 30vw;
+    min-width: 150px;
+    max-width: 250px;
+    background: #fffbe6;
+    border: 2px solid #e0d7b8;
+    border-radius: 8px;
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 1rem 1rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.bulletin-img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bulletin-caption {
+    padding: 0.75rem;
+    font-family: inherit;
+    color: #5c4a1f;
+}
+
+.bulletin-item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.bulletin-item p {
+    font-size: 0.85rem;
+    color: #877c60;
+}
+
+.bulletin-pin {
+    position: absolute;
+    top: -15px;
+    left: 45%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: auto;
+    z-index: 10;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bulletin-header {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .bulletin-item {
+        min-width: 70vw;
+    }
+}
