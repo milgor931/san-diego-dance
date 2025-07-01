@@ -64,6 +64,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    padding: 0px 20px 20px 20px;
 }
 
 .community-item {
@@ -71,8 +72,8 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    border-top: 5px solid #0073e6;
+    width: 40vw;
+    max-width: 500px;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     cursor: pointer;
 }
@@ -105,4 +106,7 @@
 
 /* For small screen devices */
 @media (max-width: 728px) {
+    .community-item {
+        width: 80vw;
+    }
 }

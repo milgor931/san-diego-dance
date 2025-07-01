@@ -52,6 +52,7 @@ const EventCalendar = () => {
     const [eventsData, setEventsData] = useState([]);
     const [events, setEvents] = useState([]);
     const [eventsByDate, setEventsByDate] = useState([]);
+    const [allEvents, setAllEvents] = useState([]);
     const [eventsByMonth, setEventsByMonth] = useState([]);
     const [selectedType, setSelectedType] = useState("any");
 
@@ -86,9 +87,11 @@ const EventCalendar = () => {
         let nonClassEvents = eventsData.filter(event => event.eventType !== "class")
 
         // Combine original events with the auto-generated class events
-        let allEvents = [...nonClassEvents, ...classEvents];
+        let _allEvents = [...nonClassEvents, ...classEvents];
 
-        let upcomingEvents = filterUpcomingEvents(allEvents);
+        let upcomingEvents = filterUpcomingEvents(_allEvents);
+
+        setAllEvents(_allEvents);
 
         let filteredEvents = selectedType === "any"
             ? upcomingEvents
@@ -150,7 +153,7 @@ const EventCalendar = () => {
     }
 
     const loadMore = () => {
-        setVisibleCount(visibleCount + 5);
+        setVisibleCount(visibleCount + 10);
     };
 
     return (
@@ -190,7 +193,7 @@ const EventCalendar = () => {
                             ))}
                         </div>
                     ))}
-                    {visibleCount < eventsData.length && (
+                    {visibleCount < allEvents.length && (
                         <button onClick={loadMore} className="load-more-btn">Load More</button>
                     )}
                 </div>

@@ -3,8 +3,13 @@
     padding: 4rem 2rem;
     background-color: #f9f5f2;
     background-image: url("/public/assets/bulletinboard.jpg");
+    /* background-image: url("https://wallpapers.com/images/hd/bulletin-board-background-1600-x-1200-1ohnx4m90qij6ks1.jpg"); */
     background-repeat: repeat;
     background-position: top center;
+    /* background: linear-gradient(145deg, #1a1a1a, #2c2c2c, #1a1a1a); */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .bulletin-header {
@@ -20,6 +25,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
+    max-width: 60vw;
 }
 
 .bulletin-header h2 {
@@ -39,25 +45,6 @@
     color: #ff6f61;
     text-decoration: none;
 }
-
-/* .bulletin-links {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
-}
-
-.bulletin-links a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
-    background-color: #0073e6;
-    border-radius: 20px;
-    padding: 10px;
-    border: solid 2px white;
-    text-shadow: 4px 6px 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-} */
 
 .bulletin-grid {
     display: flex;
